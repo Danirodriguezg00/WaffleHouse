@@ -1,0 +1,38 @@
+// set as java application
+apply plugin: 'application'
+
+//define main class
+mainClassName = 'SimpleServer'
+
+repositories { mavenCentral() }
+
+dependencies {
+
+  implementation group: 'org.json', name: 'json', version: '20200518'
+  implementation("com.google.code.gson:gson:2.8.6")
+  compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
+  compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+}
+
+
+task SimpleWebServer(type: JavaExec) {
+  group 'http'
+  description 'Simple Http Demo'
+
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'httpServer.WebServer'
+  standardInput = System.in
+}
+
+task FunWebServer(type: JavaExec) {
+  group 'http'
+  description 'Simple Http Demo'
+
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'funHttpServer.WebServer'
+  standardInput = System.in
+}
+
+
